@@ -1,4 +1,7 @@
 package com.jp.userregistration.dao;
 
-public interface UserRegistrationDAO {
+import com.jp.userregistration.entity.User;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRegistrationDAO extends CrudRepository<User,String> {
 }

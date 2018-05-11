@@ -2,7 +2,9 @@ package com.jp.userregistration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.couchbase.repository.config.EnableCouchbaseRepositories;
 
+@EnableCouchbaseRepositories
 @SpringBootApplication
 public class UserRegistrationApplication {
 
