@@ -1,3 +1,8 @@
 spring:
   application:
     name: user-registration-service
+  couchbase:
+    bucket:
+      name: neha
+      password: admin123
+    bootstrap-hosts: localhost:8091
