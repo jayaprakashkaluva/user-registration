@@ -1,8 +1,9 @@
 package com.jp.userregistration.manager;
 
+import com.jp.model.user.User;
 import com.jp.userregistration.dao.UserRegistrationDAO;
-import com.jp.userregistration.entity.User;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,12 @@ public class UserRegistrationManager {
 
     private UserRegistrationDAO userRegistrationDAO;
 
-    public User saveUser(User  user) {
-        String id = UUID.randomUUID().toString();
-        user.setId(id);
-    return userRegistrationDAO.save(user);
+    public User saveUser(User user) {
+        com.jp.couch.user.User userEntity = new com.jp.couch.user.User();
+        BeanUtils.copyProperties(user,userEntity);
+        userEntity.setId(UUID.randomUUID().toString());
+    User newUser =  new User();
+    BeanUtils.copyProperties(userRegistrationDAO.save(userEntity),newUser);
+    return newUser;
     }
 }

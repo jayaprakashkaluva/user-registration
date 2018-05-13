@@ -1,6 +1,6 @@
 package com.jp.userregistration.controller;
 
-import com.jp.userregistration.entity.User;
+import com.jp.model.user.User;
 import com.jp.userregistration.manager.UserRegistrationManager;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/users")
+@AllArgsConstructor
 public class UserRegistrationController {
 
-    @Autowired
     private  UserRegistrationManager userRegistrationManager;
     @PostMapping("/save")
     public User createUser(@RequestBody final User user) {
