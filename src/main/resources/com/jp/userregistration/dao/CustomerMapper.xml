@@ -1,0 +1,26 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jp.userregistration.dao.CustomerMapper">
+
+    <resultMap id="userResultMap" type="User">
+        <result column="cust_id" property="userId"/>
+        <result column="email" property="email"/>
+        <result column="salt" property="salt"/>
+        <result column="password_hash" property="password"/>
+    </resultMap>
+
+    <insert id="createCustomer" parameterType="User" useGeneratedKeys="true">
+        insert into Customer(cust_id,email,salt,password_hash,status,first_name,last_name) values(#{userId},#{email},#{salt},#{password},#{status},#{firstName},#{lastName})
+    </insert>
+    <insert id="createBilling" parameterType="Address" useGeneratedKeys="true" keyProperty="id">
+        insert into Cust_Billing_Address(address_id,first_name,last_name,address1,address2,city,state,zipcode,cust_id) values(#{addressId},#{firstName},#{lastName},#{address1},#{address2},#{city},#{state},#{zipCode},#{custId})
+    </insert>
+    <insert id="createShipping" parameterType="map" useGeneratedKeys="true" keyProperty="id">
+        insert into Cust_Shipping_Address(address_id,first_name,last_name,address1,address2,city,state,zipcode,cust_id) values(#{addressId},#{firstName},#{lastName},#{address1},#{address2},#{city},#{state},#{zipCode},#{custId})
+    </insert>
+    <select id="getUser" parameterType="User" resultMap="userResultMap">
+        select cust_id,salt,password_hash,email from customer where email= #{email}
+    </select>
+</mapper>

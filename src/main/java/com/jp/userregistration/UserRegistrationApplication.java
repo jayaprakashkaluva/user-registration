@@ -1,11 +1,13 @@
 package com.jp.userregistration;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.couchbase.repository.config.EnableCouchbaseRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@EnableCouchbaseRepositories
 @SpringBootApplication
+@MapperScan("com.jp.userregistration.dao")
+@EnableTransactionManagement
 public class UserRegistrationApplication {
 
 	public static void main(String[] args) {

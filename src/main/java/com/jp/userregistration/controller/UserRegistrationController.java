@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserRegistrationController {
 
     private  UserRegistrationManager userRegistrationManager;
-    @PostMapping("/v2/save")
-    public User createUser(@RequestBody final User user) {
-      return  userRegistrationManager.saveUser(user);
-    }
 
     @PostMapping("/v1/save")
     public User createUserInRdbms(@RequestBody final User user) {
-        return  userRegistrationManager.saveUser(user);
+        return  userRegistrationManager.createCustomerInRdbms(user);
+    }
+
+    @PostMapping("/v1/authenticate")
+    public User authenticateUser(@RequestBody final User user) {
+        return  userRegistrationManager.authenticateUser(user);
     }
 }

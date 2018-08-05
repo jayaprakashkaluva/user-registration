@@ -6,3 +6,15 @@ spring:
       name: neha
       password: admin123
     bootstrap-hosts: localhost:8091
+customer:
+  database:
+    url:  jdbc:sqlserver://localhost;databaseName=customerdb;integratedSecurity=true;
+    driver-name:  com.microsoft.sqlserver.jdbc.SQLServerDriver
+mybatis:
+    type-aliases-package: com.jp.model.user
+    type-handlers-package: com.example.typehandler
+    type-handlers-package: com.example.typehandler
+    configuration:
+        map-underscore-to-camel-case: true
+        default-fetch-size: 100
+        default-statement-timeout: 30
