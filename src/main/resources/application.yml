@@ -4,5 +4,5 @@ spring:
   couchbase:
     bucket:
       name: neha
-      password: admin123
-    bootstrap-hosts: localhost:8091
+      password: Grande@90
+    bootstrap-hosts: couch-db

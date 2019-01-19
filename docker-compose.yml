@@ -1,0 +1,21 @@
+version: "2.0"
+services:
+  couch-db:
+    image: couchbase/server:community
+    volumes:
+      - ~/couchbase:/opt/couchbase/var
+    ports:
+      - 8091
+    networks:
+      - user-registration-net
+  user-registration:
+    image: jayaprakashkaluva/user-registration:latest
+    ports:
+      - 8082
+    networks:
+      - user-registration-net
+    depends_on:
+      - couch-db
+networks:
+  user-registration-net:
+    driver: bridge
